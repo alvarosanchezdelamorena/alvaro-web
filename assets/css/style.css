@@ -469,6 +469,40 @@ ul.help-list li::before {
   .card, .btn-cita, .btn-primary, .hero-card, .stat { transition: none; }
 }
 
+/* ---------- Blog ---------- */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 12px; }
+@media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+.blog-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  box-shadow: var(--shadow); transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex; flex-direction: column;
+}
+.blog-card:hover { transform: translateY(-4px); box-shadow: 0 28px 50px -22px rgba(0,0,0,0.45); }
+.blog-cover {
+  height: 180px;
+  background: radial-gradient(ellipse 500px 260px at 20% 0%, rgba(201,162,39,0.35), transparent 60%), linear-gradient(150deg, var(--black) 0%, var(--navy) 60%, var(--navy-2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.blog-cover img { width: 100%; height: 100%; object-fit: cover; }
+.blog-cover .mark { color: var(--gold-light); font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.6rem; opacity: 0.85; }
+.blog-card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.blog-card-body .cat { color: var(--gold-deep); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.blog-card-body h3 { margin: 4px 0 6px; font-size: 1.15rem; }
+.blog-card-body p { color: var(--gray); font-size: 0.92rem; margin-bottom: 10px; }
+.blog-card-body .more { margin-top: auto; }
+.blog-meta { color: var(--gray); font-size: 0.82rem; margin-bottom: 22px; }
+.article-cover {
+  height: 320px; border-radius: 6px; overflow: hidden; margin: 28px 0;
+  background: radial-gradient(ellipse 700px 380px at 25% 0%, rgba(201,162,39,0.3), transparent 60%), linear-gradient(150deg, var(--black) 0%, var(--navy) 60%, var(--navy-2) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.article-cover img { width: 100%; height: 100%; object-fit: cover; }
+.article-cover .mark { color: var(--gold-light); font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.4rem; opacity: 0.8; }
+.article-body h2 { margin-top: 44px; }
+.article-body p, .article-body li { color: var(--ink); font-size: 1.02rem; }
+.article-body ul { line-height: 1.9; }
+
 /* ---------- Contact form ---------- */
 .form-field { margin-bottom: 18px; }
 .form-field label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem; }
