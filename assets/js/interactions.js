@@ -203,6 +203,60 @@
       });
   }
 
+  // Aviso de cookies: el sitio no usa cookies de analítica ni publicidad,
+  // solo localStorage técnico para recordar que el aviso ya se mostró.
+  // Se construye por JS para no tener que tocar cada página del sitio.
+  function initCookieBanner() {
+    var STORAGE_KEY = "asm-cookie-notice-dismissed";
+    try {
+      if (localStorage.getItem(STORAGE_KEY)) return;
+    } catch (e) {
+      return; // Sin acceso a localStorage: no insistimos con el aviso.
+    }
+
+    var banner = document.createElement("div");
+    banner.className = "cookie-banner";
+    banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-label", "Aviso de cookies");
+
+    var inner = document.createElement("div");
+    inner.className = "cookie-banner-inner";
+
+    var text = document.createElement("p");
+    text.innerHTML = 'Este sitio no usa cookies de analítica ni publicidad, solo almacenamiento técnico necesario. Más información en la <a href="/politica-de-cookies/">política de cookies</a>.';
+
+    var actions = document.createElement("div");
+    actions.className = "cookie-banner-actions";
+
+    var moreBtn = document.createElement("a");
+    moreBtn.href = "/politica-de-cookies/";
+    moreBtn.textContent = "Más información";
+    moreBtn.style.cssText = "align-self:center; color:#cfd4dd; font-size:0.85rem; text-decoration:underline;";
+
+    var acceptBtn = document.createElement("button");
+    acceptBtn.type = "button";
+    acceptBtn.className = "cookie-accept";
+    acceptBtn.textContent = "Entendido";
+
+    function dismiss() {
+      try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
+      banner.classList.remove("is-visible");
+      window.setTimeout(function () { banner.remove(); }, 400);
+    }
+    acceptBtn.addEventListener("click", dismiss);
+
+    actions.appendChild(moreBtn);
+    actions.appendChild(acceptBtn);
+    inner.appendChild(text);
+    inner.appendChild(actions);
+    banner.appendChild(inner);
+    document.body.appendChild(banner);
+
+    window.requestAnimationFrame(function () {
+      window.setTimeout(function () { banner.classList.add("is-visible"); }, 200);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     markRevealTargets();
     initScrollReveal();
@@ -211,5 +265,6 @@
     initSpecialtiesToggle();
     initCrimeAccordion();
     initLatestPosts();
+    initCookieBanner();
   });
 })();
