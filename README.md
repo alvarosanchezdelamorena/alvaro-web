@@ -10,7 +10,7 @@ Busca estos marcadores en los archivos y sustitúyelos por los datos reales:
 2. **Formulario de contacto** — en `contacto/index.html`, sustituye `https://formspree.io/f/SUSTITUIR_POR_TU_ID` por tu endpoint real:
    - Ve a [formspree.io](https://formspree.io), crea una cuenta gratis (50 envíos/mes gratis, de sobra para empezar).
    - Crea un formulario nuevo, copia el ID que te da, y pégalo en la URL de acción.
-3. **Foto real** — sube una foto profesional de Álvaro a `assets/img/alvaro.jpg` (se referencia en el schema de la home, y conviene añadirla también visualmente a la página de "Sobre mí").
+3. ~~**Foto real**~~ — hecho. Foto profesional de Álvaro en `assets/img/brand/alvaro-sanchez-de-la-morena-del-olmo-abogado-penalista-madrid.jpg`, referenciada en el schema de la home y visible en "Sobre mí".
 
 ## Cómo publicarla — paso a paso (Cloudflare Pages, recomendado)
 
