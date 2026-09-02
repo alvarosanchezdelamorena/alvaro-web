@@ -124,11 +124,72 @@ nav.main-nav a:hover { color: var(--gold-light); }
   letter-spacing: 0.03em;
 }
 .btn-cita:hover { filter: brightness(1.08); }
-.nav-toggle { display: none; }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 860px) {
-  nav.main-nav { display: none; }
-  .nav-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.6rem; }
+  .nav-toggle { display: flex; }
+  nav.main-nav {
+    position: fixed;
+    top: var(--header-h, 69px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--black);
+    border-top: 1px solid var(--gold-deep);
+    border-bottom: 1px solid var(--gold-deep);
+    max-height: calc(100vh - var(--header-h, 69px));
+    overflow-y: auto;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+    z-index: 60;
+  }
+  nav.main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  nav.main-nav a {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 1rem;
+  }
+  nav.main-nav a.btn-cita {
+    margin: 14px 24px;
+    text-align: center;
+    border-bottom: none;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -176,29 +237,29 @@ nav.main-nav a:hover { color: var(--gold-light); }
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 1fr));
-  gap: 26px 28px;
+  gap: 14px;
   margin-top: 38px;
-  border-top: 1px solid rgba(255,255,255,0.14);
-  padding-top: 28px;
 }
 .stat {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 20px;
-  border-left: 1px solid rgba(255,255,255,0.12);
+  padding: 18px 20px;
+  min-height: 128px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 6px;
 }
-.stat:nth-child(odd) { padding-left: 0; border-left: none; }
 .stat-icon {
-  width: 28px; height: 28px;
-  margin-bottom: 12px;
+  width: 26px; height: 26px;
+  margin-bottom: 10px;
   color: var(--gold-light);
 }
 .stat-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.4; }
 .stat .num {
   font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
   font-variant-numeric: lining-nums;
@@ -209,17 +270,26 @@ nav.main-nav a:hover { color: var(--gold-light); }
   color: transparent;
 }
 .stat .label {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
+  line-height: 1.35;
   color: #b7bec9;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   margin-top: 7px;
-  max-width: 17ch;
+}
+.stat .label-sub {
+  display: block;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: #8b93a1;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  margin-top: 4px;
 }
 @media (max-width: 480px) {
-  .hero-stats { grid-template-columns: 1fr; }
-  .stat, .stat:nth-child(odd) { padding-left: 0; border-left: none; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat { min-height: 110px; padding: 14px 16px; }
+  .stat .num { font-size: 1.7rem; }
 }
 .hero-card {
   background: rgba(255,255,255,0.04);
@@ -262,10 +332,12 @@ nav.main-nav a:hover { color: var(--gold-light); }
 
 /* ---------- Sections ---------- */
 section { padding: 84px 24px; }
-/* Un único fondo de contenido en todo el sitio (blanco) — el contraste lo aportan
-   solo el hero y el cta-banner oscuros, no una alternancia de tonos claros. */
-.section-cream { background: #fff; }
-.section-white { background: #fff; }
+/* Un único fondo de contenido en todo el sitio (crema) — el contraste lo aportan
+   solo el hero y el cta-banner oscuros, no una alternancia de tonos claros.
+   Las tarjetas (.card, .result-card, etc.) siguen en blanco puro, así que
+   resaltan mejor sobre este fondo que sobre uno también blanco. */
+.section-cream { background: var(--cream); }
+.section-white { background: var(--cream); }
 .section-navy { background: var(--black-2); color: #fff; }
 .section-head { max-width: 720px; margin: 0 auto 52px; text-align: center; }
 .section-head .eyebrow { color: var(--gold); }

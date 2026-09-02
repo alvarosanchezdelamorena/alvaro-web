@@ -57,6 +57,51 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function initMobileNav() {
+    var toggle = document.getElementById("nav-toggle");
+    var nav = document.getElementById("main-nav");
+    var header = document.querySelector("header.site-header");
+    if (!toggle || !nav) return;
+
+    function setHeaderHeight() {
+      if (header) {
+        document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+      }
+    }
+    setHeaderHeight();
+    window.addEventListener("resize", setHeaderHeight);
+
+    function closeNav() {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+    function openNav() {
+      nav.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    toggle.addEventListener("click", function () {
+      var isOpen = nav.classList.contains("is-open");
+      if (isOpen) closeNav(); else openNav();
+    });
+
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeNav);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!nav.classList.contains("is-open")) return;
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      closeNav();
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 860) closeNav();
+    });
+  }
+
   function initSpecialtiesToggle() {
     var btn = document.getElementById("btn-specialties-toggle");
     var extra = document.getElementById("specialties-extra");
@@ -67,7 +112,7 @@
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       var label = btn.querySelector(".btn-label");
       if (label) {
-        label.textContent = isOpen ? "Ver menos especialidades" : "Ver todas las especialidades (34)";
+        label.textContent = isOpen ? "Ver menos especialidades" : "Ver todas las especialidades (26)";
       }
       if (isOpen) {
         extra.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -79,6 +124,7 @@
     markRevealTargets();
     initScrollReveal();
     initHeaderShadow();
+    initMobileNav();
     initSpecialtiesToggle();
   });
 })();
