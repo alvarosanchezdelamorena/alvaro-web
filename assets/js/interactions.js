@@ -57,9 +57,28 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function initSpecialtiesToggle() {
+    var btn = document.getElementById("btn-specialties-toggle");
+    var extra = document.getElementById("specialties-extra");
+    if (!btn || !extra) return;
+    btn.addEventListener("click", function () {
+      var isOpen = extra.classList.toggle("is-open");
+      btn.classList.toggle("is-open", isOpen);
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      var label = btn.querySelector(".btn-label");
+      if (label) {
+        label.textContent = isOpen ? "Ver menos especialidades" : "Ver todas las especialidades (34)";
+      }
+      if (isOpen) {
+        extra.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     markRevealTargets();
     initScrollReveal();
     initHeaderShadow();
+    initSpecialtiesToggle();
   });
 })();
