@@ -1,0 +1,37 @@
+{
+  "_readme": "Para publicar un artículo nuevo del blog en la web, añade un objeto nuevo AL PRINCIPIO de la lista 'posts' (primera posición del array). La portada (index.html) toma automáticamente los 3 primeros de esta lista, sin tocar ningún otro archivo. No borres ni reordenes las entradas existentes salvo que el artículo deje de estar publicado.",
+  "posts": [
+    {
+      "slug": "que-hacer-si-te-detiene-la-policia",
+      "title": "Qué hacer si te detiene la policía",
+      "excerpt": "Guía práctica de un abogado penalista: sus derechos ante una detención, qué decir y qué no decir, y los primeros pasos que marcan la diferencia.",
+      "cat": "Guía práctica",
+      "img": "/assets/img/blog/blog-que-hacer-si-te-detiene-la-policia-madrid.jpg",
+      "alt": "Guía sobre qué hacer ante una detención policial en Madrid"
+    },
+    {
+      "slug": "alcoholemia-positiva-consecuencias-penales",
+      "title": "Alcoholemia positiva",
+      "excerpt": "Qué pasa si da positivo en un control de alcoholemia: cuándo es delito y no infracción, penas previstas y primeros pasos con un abogado penalista en Madrid.",
+      "cat": "Seguridad vial",
+      "img": "/assets/img/blog/blog-alcoholemia-positiva-consecuencias-penales-madrid.jpg",
+      "alt": "Consecuencias penales de dar positivo en un control de alcoholemia en Madrid"
+    },
+    {
+      "slug": "estafa-online-como-actuar",
+      "title": "Estafa online",
+      "excerpt": "Guía sobre estafas online: qué hacer si le acusan de un fraude informático y qué hacer si ha sido víctima. Abogado penalista en Madrid.",
+      "cat": "Ciberdelitos y delitos económicos",
+      "img": "/assets/img/blog/blog-estafa-online-como-actuar-madrid.jpg",
+      "alt": "Cómo actuar ante una estafa online, como acusado o como víctima, en Madrid"
+    },
+    {
+      "slug": "autoconsumo-vs-trafico-de-drogas-limite-legal",
+      "title": "Autoconsumo vs. tráfico",
+      "excerpt": "Diferencia legal entre autoconsumo/consumo compartido y tráfico de drogas según la jurisprudencia del Tribunal Supremo. Abogado penalista en Madrid.",
+      "cat": "Delitos contra la salud pública",
+      "img": "/assets/img/blog/blog-autoconsumo-vs-trafico-drogas-limite-legal-madrid.jpg",
+      "alt": "Límite legal entre autoconsumo compartido y tráfico de drogas en España"
+    }
+  ]
+}

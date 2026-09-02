@@ -120,11 +120,96 @@
     });
   }
 
+  function initCrimeAccordion() {
+    var items = document.querySelectorAll(".crime-item");
+    if (!items.length) return;
+    items.forEach(function (item) {
+      var btn = item.querySelector(".crime-q");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var isOpen = item.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    });
+  }
+
+  // Sección "Últimos artículos" en portada: lee /assets/data/blog-posts.json
+  // y pinta los 3 primeros. Publicar un artículo nuevo solo requiere añadir
+  // una entrada al principio de ese JSON — esta portada se actualiza sola,
+  // sin tocar index.html. Si falla la carga (sin JS, red, etc.) se conserva
+  // el bloque estático ya presente en el HTML como respaldo.
+  function buildBlogCard(post) {
+    var a = document.createElement("a");
+    a.href = "/blog/" + post.slug + "/";
+    a.className = "blog-card";
+    a.style.textDecoration = "none";
+
+    var cover = document.createElement("div");
+    cover.className = "blog-cover";
+    var img = document.createElement("img");
+    img.src = post.img;
+    img.alt = post.alt || post.title;
+    img.loading = "lazy";
+    var mark = document.createElement("span");
+    mark.className = "mark";
+    mark.style.display = "none";
+    mark.textContent = "ASM";
+    img.onerror = function () {
+      mark.style.display = "flex";
+      img.remove();
+    };
+    cover.appendChild(img);
+    cover.appendChild(mark);
+
+    var body = document.createElement("div");
+    body.className = "blog-card-body";
+    var cat = document.createElement("div");
+    cat.className = "cat";
+    cat.textContent = post.cat;
+    var h3 = document.createElement("h3");
+    h3.textContent = post.title;
+    var p = document.createElement("p");
+    p.textContent = post.excerpt;
+    var more = document.createElement("span");
+    more.className = "more";
+    more.textContent = "Leer artículo";
+    body.appendChild(cat);
+    body.appendChild(h3);
+    body.appendChild(p);
+    body.appendChild(more);
+
+    a.appendChild(cover);
+    a.appendChild(body);
+    return a;
+  }
+
+  function initLatestPosts() {
+    var grid = document.getElementById("latest-posts-grid");
+    if (!grid) return;
+    fetch("/assets/data/blog-posts.json")
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        var posts = data && data.posts;
+        if (!posts || !posts.length) return;
+        var frag = document.createDocumentFragment();
+        posts.slice(0, 3).forEach(function (post) {
+          frag.appendChild(buildBlogCard(post));
+        });
+        grid.innerHTML = "";
+        grid.appendChild(frag);
+      })
+      .catch(function () {
+        // Sin conexión al JSON: se deja el respaldo estático ya presente en el HTML.
+      });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     markRevealTargets();
     initScrollReveal();
     initHeaderShadow();
     initMobileNav();
     initSpecialtiesToggle();
+    initCrimeAccordion();
+    initLatestPosts();
   });
 })();
