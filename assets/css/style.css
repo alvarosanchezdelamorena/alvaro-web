@@ -1,0 +1,322 @@
+/* ============================================================
+   Álvaro Sánchez de la Morena del Olmo — Abogado Penalista
+   Hoja de estilos principal
+   ============================================================ */
+
+:root {
+  --navy: #0b1626;
+  --navy-2: #10203a;
+  --gold: #b8925a;
+  --gold-light: #d9b98a;
+  --cream: #f7f4ef;
+  --ink: #1b2430;
+  --gray: #5b6572;
+  --line: #e4ddd0;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+h3 { font-size: 1.35rem; }
+
+p { margin: 0 0 1.1em; }
+a { color: var(--navy); }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header ---------- */
+header.site-header {
+  background: var(--navy);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  text-decoration: none;
+}
+.brand .name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.brand .role {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+nav.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+nav.main-nav a {
+  color: #e7e3da;
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+nav.main-nav a:hover { color: var(--gold-light); }
+.btn-cita {
+  background: var(--gold);
+  color: var(--navy) !important;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-weight: 700 !important;
+}
+.btn-cita:hover { background: var(--gold-light); }
+.nav-toggle { display: none; }
+
+@media (max-width: 860px) {
+  nav.main-nav { display: none; }
+  .nav-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.6rem; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+  color: #fff;
+  padding: 90px 24px 100px;
+}
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.eyebrow {
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.hero h1 { color: #fff; }
+.hero .lead {
+  color: #cfd4dd;
+  font-size: 1.15rem;
+  max-width: 46ch;
+}
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.stat .num {
+  font-family: "Playfair Display", serif;
+  font-size: 2.1rem;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.stat .label {
+  font-size: 0.82rem;
+  color: #b7bec9;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 34px;
+}
+.hero-card h3 { color: #fff; margin-bottom: 18px; }
+.hero-card ul { padding-left: 0; list-style: none; margin: 0 0 26px; }
+.hero-card li {
+  padding-left: 26px;
+  position: relative;
+  margin-bottom: 12px;
+  color: #dfe2e8;
+  font-size: 0.95rem;
+}
+.hero-card li::before {
+  content: "";
+  position: absolute; left: 0; top: 7px;
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 3px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.btn-primary { background: var(--gold); color: var(--navy); }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+.btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+.btn-block { display: block; width: 100%; }
+
+/* ---------- Sections ---------- */
+section { padding: 84px 24px; }
+.section-cream { background: var(--cream); }
+.section-white { background: #fff; }
+.section-navy { background: var(--navy); color: #fff; }
+.section-head { max-width: 720px; margin: 0 auto 52px; text-align: center; }
+.section-head .eyebrow { color: var(--gold); }
+.section-head p { color: var(--gray); font-size: 1.05rem; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+}
+.card .icon {
+  width: 46px; height: 46px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.card h3 { margin-bottom: 10px; }
+.card p { color: var(--gray); margin-bottom: 18px; font-size: 0.96rem; }
+.card a.more { font-weight: 700; font-size: 0.9rem; text-decoration: none; color: var(--navy); }
+.card a.more::after { content: " →"; color: var(--gold); }
+
+.notice {
+  border-left: 4px solid var(--gold);
+  background: #fbf8f2;
+  padding: 20px 24px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.quote-block {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  font-style: italic;
+  margin: 30px 0;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+.breadcrumb a { color: var(--gray); text-decoration: none; }
+.breadcrumb a:hover { color: var(--navy); }
+
+/* ---------- CTA banner ---------- */
+.cta-banner {
+  background: var(--navy);
+  color: #fff;
+  padding: 60px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: #fff; }
+.cta-banner p { color: #cfd4dd; max-width: 55ch; margin: 0 auto 28px; }
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background: #08111d;
+  color: #9aa3b0;
+  padding: 56px 24px 28px;
+  font-size: 0.9rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+  max-width: var(--max);
+  margin: 0 auto 36px;
+}
+@media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } }
+.footer-grid h4 { color: #fff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: inherit; }
+.footer-grid a { color: #9aa3b0; text-decoration: none; display: block; margin-bottom: 10px; }
+.footer-grid a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 22px;
+  font-size: 0.8rem;
+  color: #6b7482;
+}
+
+/* ---------- Contact form ---------- */
+.form-field { margin-bottom: 18px; }
+.form-field label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.9rem; }
+.form-field input, .form-field textarea, .form-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+}
+.form-field textarea { min-height: 130px; }
