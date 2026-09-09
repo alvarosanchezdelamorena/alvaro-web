@@ -257,6 +257,59 @@
     });
   }
 
+  // Bloque "Compartir" en artículos del blog: los enlaces se rellenan por JS
+  // (no hardcodeados en el HTML) para no tener que tocar cada post al añadir
+  // o cambiar una red social — basta con editar esta función una vez.
+  function initShareBar() {
+    var bars = document.querySelectorAll(".share-bar");
+    if (!bars.length) return;
+    var url = encodeURIComponent(window.location.href);
+    var rawTitle = document.title.replace(/\s*\|\s*Blog\s*$/, "").trim();
+    var title = encodeURIComponent(rawTitle);
+    var targets = {
+      whatsapp: "https://wa.me/?text=" + title + "%20" + url,
+      telegram: "https://t.me/share/url?url=" + url + "&text=" + title,
+      x: "https://twitter.com/intent/tweet?url=" + url + "&text=" + title,
+      linkedin: "https://www.linkedin.com/sharing/share-offsite/?url=" + url,
+      facebook: "https://www.facebook.com/sharer/sharer.php?u=" + url
+    };
+    bars.forEach(function (bar) {
+      bar.querySelectorAll("[data-share]").forEach(function (btn) {
+        var key = btn.getAttribute("data-share");
+        if (key === "copy") {
+          btn.addEventListener("click", function () {
+            var reset = function () {
+              btn.classList.remove("is-copied");
+            };
+            var fallback = function () {
+              var tmp = document.createElement("input");
+              tmp.value = window.location.href;
+              document.body.appendChild(tmp);
+              tmp.select();
+              try { document.execCommand("copy"); } catch (e) {}
+              document.body.removeChild(tmp);
+            };
+            var mark = function () {
+              btn.classList.add("is-copied");
+              window.setTimeout(reset, 1800);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(window.location.href).then(mark, function () {
+                fallback();
+                mark();
+              });
+            } else {
+              fallback();
+              mark();
+            }
+          });
+        } else if (targets[key]) {
+          btn.setAttribute("href", targets[key]);
+        }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     markRevealTargets();
     initScrollReveal();
@@ -266,5 +319,6 @@
     initCrimeAccordion();
     initLatestPosts();
     initCookieBanner();
+    initShareBar();
   });
 })();

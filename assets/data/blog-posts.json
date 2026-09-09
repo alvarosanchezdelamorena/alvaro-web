@@ -2,6 +2,14 @@
   "_readme": "Para publicar un artículo nuevo del blog en la web, añade un objeto nuevo AL PRINCIPIO de la lista 'posts' (primera posición del array). La portada (index.html) toma automáticamente los 3 primeros de esta lista, sin tocar ningún otro archivo. No borres ni reordenes las entradas existentes salvo que el artículo deje de estar publicado.",
   "posts": [
     {
+      "slug": "encrochat-sky-ecc-ennetcom-prueba-narcotrafico",
+      "title": "EncroChat, Sky ECC y Ennetcom como prueba",
+      "excerpt": "La STS 854/2025, la absolución de Valencia y el giro del TSJCV: qué dice hoy la jurisprudencia sobre estos chats como prueba en narcotráfico.",
+      "cat": "Narcotráfico",
+      "img": "/assets/img/blog/blog-encrochat-sky-ecc-ennetcom-madrid.jpg",
+      "alt": "EncroChat, Sky ECC y Ennetcom como prueba en narcotráfico - Álvaro Sánchez de la Morena del Olmo, abogado penalista Madrid"
+    },
+    {
       "slug": "que-hacer-si-te-detiene-la-policia",
       "title": "Qué hacer si te detiene la policía",
       "excerpt": "Guía práctica de un abogado penalista: sus derechos ante una detención, qué decir y qué no decir, y los primeros pasos que marcan la diferencia.",
