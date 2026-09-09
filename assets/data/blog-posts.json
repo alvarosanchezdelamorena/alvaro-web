@@ -2,6 +2,30 @@
   "_readme": "Para publicar un artículo nuevo del blog en la web, añade un objeto nuevo AL PRINCIPIO de la lista 'posts' (primera posición del array). La portada (index.html) toma automáticamente los 3 primeros de esta lista, sin tocar ningún otro archivo. No borres ni reordenes las entradas existentes salvo que el artículo deje de estar publicado.",
   "posts": [
     {
+      "slug": "entrada-registro-domiciliario-sin-orden-judicial",
+      "title": "Entrada y registro sin orden judicial",
+      "excerpt": "Cuándo el consentimiento es válido, qué es flagrante delito de verdad y cuándo la prueba obtenida en su domicilio puede anularse.",
+      "cat": "Narcotráfico",
+      "img": "/assets/img/blog/blog-entrada-registro-domiciliario-sin-orden-alvaro-sanchez-abogado-penalista-madrid.jpg",
+      "alt": "Entrada y registro domiciliario sin orden judicial - Álvaro Sánchez de la Morena del Olmo, abogado penalista Madrid"
+    },
+    {
+      "slug": "agente-encubierto-narcotrafico-prueba-valida",
+      "title": "Agente encubierto en narcotráfico",
+      "excerpt": "La frontera entre agente encubierto y agente provocador: cuándo la prueba es válida y cuándo hay delito provocado, según el Tribunal Supremo.",
+      "cat": "Narcotráfico",
+      "img": "/assets/img/blog/blog-agente-encubierto-narcotrafico-alvaro-sanchez-abogado-penalista-madrid.jpg",
+      "alt": "Agente encubierto en narcotráfico, prueba válida o nula - Álvaro Sánchez de la Morena del Olmo, abogado penalista Madrid"
+    },
+    {
+      "slug": "testaferro-prestanombres-blanqueo-capitales",
+      "title": "Testaferro en blanqueo de capitales",
+      "excerpt": "Qué dice la jurisprudencia sobre la \"ignorancia deliberada\" y cómo defenderse si le han investigado como testaferro o prestanombres.",
+      "cat": "Blanqueo de capitales",
+      "img": "/assets/img/blog/blog-testaferro-prestanombres-blanqueo-capitales-alvaro-sanchez-abogado-penalista-madrid.jpg",
+      "alt": "Testaferro o prestanombres en blanqueo de capitales - Álvaro Sánchez de la Morena del Olmo, abogado penalista Madrid"
+    },
+    {
       "slug": "encrochat-sky-ecc-ennetcom-prueba-narcotrafico",
       "title": "EncroChat, Sky ECC y Ennetcom como prueba",
       "excerpt": "La STS 854/2025, la absolución de Valencia y el giro del TSJCV: qué dice hoy la jurisprudencia sobre estos chats como prueba en narcotráfico.",
