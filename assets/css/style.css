@@ -832,6 +832,29 @@ ul.help-list li::before {
 .article-body p, .article-body li { color: var(--ink); font-size: 1.02rem; }
 .article-body ul { line-height: 1.9; }
 
+.author-box {
+  display: flex; gap: 22px; align-items: flex-start;
+  background: var(--black); border: 1px solid var(--gold-deep);
+  border-radius: 14px; padding: 26px 28px; margin: 34px 0 8px;
+  box-shadow: var(--shadow);
+}
+.author-photo {
+  width: 84px; height: 84px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--gold); flex-shrink: 0;
+}
+.author-box-body { flex: 1; min-width: 0; }
+.author-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 6px; }
+.author-name { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 4px; font-family: "Playfair Display", serif; }
+.author-role { font-size: 0.85rem; color: #cfd4dd; margin-bottom: 12px; }
+.author-bio { font-size: 0.92rem; color: #cfd4dd; line-height: 1.6; margin-bottom: 16px; }
+.author-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.author-links a { font-size: 0.85rem; font-weight: 700; color: var(--gold-light); text-decoration: none; border-bottom: 1px solid var(--gold-deep); padding-bottom: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
+.author-links a:hover { color: var(--gold); border-color: var(--gold); }
+@media (max-width: 560px) {
+  .author-box { flex-direction: column; align-items: center; text-align: center; }
+  .author-links { justify-content: center; }
+}
+
 /* ---------- Foto editorial ---------- */
 .editorial-photo {
   margin: 36px 0;
